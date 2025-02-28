@@ -1,16 +1,30 @@
 from datacenter.models import Passcard
 from datacenter.models import Visit
 from django.shortcuts import render
+from django.utils.timezone import localtime
 
 
 def storage_information_view(request):
     # Программируем здесь
 
+    remaining_visitors = Visit.objects.filter(leaved_at=None)
+
+    present_time = localtime()
+    entered_at_time = localtime(remaining_visitors[0].entered_at)
+
+    delta =  present_time - entered_at_time
+    
+
+    for visit in remaining_visitors:
+        visiter = visit.passcard
+        print(visiter)
+
+
     non_closed_visits = [
         {
-            'who_entered': 'Richard Shaw',
-            'entered_at': '11-04-2018 25:34',
-            'duration': '25:03',
+            'who_entered': visiter,
+            'entered_at': entered_at_time,
+            'duration': delta.seconds,
         }
     ]
     context = {
