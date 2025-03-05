@@ -11,10 +11,7 @@ def get_duration(remaining_visitors):
 
 def is_visit_long(visit):
     duration_time = get_duration(visit)
-    if duration_time > 3600:
-        return True
-    else:
-        return False
+    return duration_time > 3600
 
 
 class Passcard(models.Model):
