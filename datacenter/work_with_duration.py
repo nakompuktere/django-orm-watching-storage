@@ -8,9 +8,9 @@ def get_duration(remaining_visitors):
     delta = leaved_at_time - entered_at_time
     return delta.seconds
 
-def format_duration(duration):
-    hours = duration // 3600
-    minutes = duration // 60 % 60
+def format_duration(duration, hour=3600, minute=60):
+    hours = duration // hour
+    minutes = duration // minute % minute
 
     return f"{hours}ч {minutes}мин"
 
