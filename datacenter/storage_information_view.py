@@ -18,10 +18,7 @@ def storage_information_view(request):
         visitor_card = visit.passcard
         enteres_time = localtime(visit.entered_at)
 
-
         residence_time =  present_time - enteres_time
-        print(visitor_card)
-
 
         non_closed_visits.append({
 
