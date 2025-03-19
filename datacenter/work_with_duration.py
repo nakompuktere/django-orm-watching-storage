@@ -15,7 +15,8 @@ def format_duration(duration, hour=3600, minute=60):
     hours = duration // hour
     minutes = duration // minute % minute
 
-    return f"{hours}ч {minutes}мин"
+    return "{}ч {:02d}мин".format(hours, minutes)
+    
 
 def is_visit_long(visit, hour=3600):
     duration_time = get_duration(visit)
